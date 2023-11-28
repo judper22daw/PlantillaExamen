@@ -1,0 +1,32 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <EditText
+        android:id="@+id/editTextNom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nom" />
+
+    <EditText
+        android:id="@+id/editTextDNI"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="DNI" />
+
+    <EditText
+        android:id="@+id/editTextNota"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nota"
+        android:inputType="numberDecimal" />
+
+    <Button
+        android:id="@+id/buttonAfegir"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Afegir Alumne" />
+</LinearLayout>
