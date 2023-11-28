@@ -1,5 +1,6 @@
 package edu.fje.plantillaexamen;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.webkit.JavascriptInterface;
@@ -20,6 +21,7 @@ public class WebViewActivity extends AppCompatActivity {
         super.onCreate(icicle);
         setContentView(R.layout.m27_webview);
         navegador = (WebView) findViewById(R.id.webkit);
+        navegador.addJavascriptInterface(new WebAppInterface(this), "Android");
 
         navegador.getSettings().setJavaScriptEnabled(true);
         navegador.getSettings().setCacheMode(WebSettings.LOAD_DEFAULT);
@@ -37,5 +39,19 @@ public class WebViewActivity extends AppCompatActivity {
         // Carregar el fitxer webview.html des de la carpeta assets
         navegador.loadUrl("file:///android_asset/webview.html");
 
+    }
+
+    public class WebAppInterface {
+        Context mContext;
+
+        WebAppInterface(Context c) {
+            mContext = c;
+        }
+
+        @JavascriptInterface
+        public String getStudentData() {
+            Database db = new Database();
+            return db.getStudentsDataInJson((Activity) mContext);
+        }
     }
 }

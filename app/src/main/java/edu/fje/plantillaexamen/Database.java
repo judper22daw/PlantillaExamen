@@ -103,5 +103,25 @@ public class Database {
             return nota;
         }
     }
+    public String getStudentsDataInJson(Activity activity) {
+        List<Alumne> alumnes = dbFindAll(activity);
+        StringBuilder jsonBuilder = new StringBuilder();
+
+        jsonBuilder.append("[");
+        for (int i = 0; i < alumnes.size(); i++) {
+            Alumne alumne = alumnes.get(i);
+            jsonBuilder.append("{")
+                    .append("\"nom\": \"").append(alumne.getNom()).append("\", ")
+                    .append("\"dni\": \"").append(alumne.getDni()).append("\", ")
+                    .append("\"nota\": \"").append(alumne.getNota()).append("\"}");
+            if (i < alumnes.size() - 1) {
+                jsonBuilder.append(", ");
+            }
+        }
+        jsonBuilder.append("]");
+
+        return jsonBuilder.toString();
+    }
+
 
 }
